@@ -1,0 +1,41 @@
+.modal {
+  font-family: CabinetGrotesk, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: bold;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.modal__content {
+  margin: auto;
+  display: block;
+  border-radius: 16px;
+  max-width: 498px;
+  max-height: 610px;
+}
+
+.modal__content_type_image {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.modal__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-grow: 1;
+  border-radius: 16px;
+}
+
+.modal__close {
+    background: transparent;
+    border: none;
+}
+
+.modal__close-btn {
+  background: transparent;
+}
+
+.modal__footer {
+}

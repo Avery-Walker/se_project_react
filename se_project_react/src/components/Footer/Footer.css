@@ -1,0 +1,11 @@
+.footer {
+  font-family: CabinetGrotesk, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: Medium;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 40px 24px;
+}
