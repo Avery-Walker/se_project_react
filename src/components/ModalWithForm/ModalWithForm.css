@@ -31,7 +31,7 @@
   cursor: pointer;
 }
 
-.modal__content {
+.modal-add-garment__content {
   position: relative;
   background-color: #fff;
   padding: 28px 28px 36px;
