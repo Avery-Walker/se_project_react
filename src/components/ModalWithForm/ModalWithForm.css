@@ -1,6 +1,5 @@
 .modal {
   font-family: CabinetGrotesk, Arial, Helvetica, sans-serif;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -32,7 +31,7 @@
   cursor: pointer;
 }
 
-.modal__content {
+.modal-add-garment__content {
   position: relative;
   background-color: #fff;
   padding: 28px 28px 36px;
