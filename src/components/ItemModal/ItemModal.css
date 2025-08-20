@@ -29,8 +29,8 @@
 }
 
 .modal__close {
-    background: transparent;
-    border: none;
+  background: transparent;
+  border: none;
 }
 
 .modal__close-btn {
@@ -38,4 +38,5 @@
 }
 
 .modal__footer {
+  background-color: #fff;
 }
