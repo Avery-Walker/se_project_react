@@ -1,0 +1,10 @@
+.profile {
+  font-family: CabinetGrotesk, Arial, Helvetica, sans-serif;
+  display: flex;
+  gap: 116px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.profile__sidebar {
+  flex-direction: row;
+}

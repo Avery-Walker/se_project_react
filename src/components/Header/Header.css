@@ -22,7 +22,6 @@
   margin: 0 20px 0 auto;
   border: none;
   background: transparent;
-
 }
 
 .header__user-container {
@@ -33,4 +32,9 @@
 
 .header__username {
   margin: 0;
+}
+
+.header__link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
 }
