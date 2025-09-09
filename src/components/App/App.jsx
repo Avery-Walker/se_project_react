@@ -10,8 +10,9 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { getItems, addItem, deleteItem } from "../../utils/api";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -23,6 +24,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState("");
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -35,16 +37,6 @@ function App() {
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
-  };
-
-  const onAddItem = (inputValues) => {
-    const newCardData = {
-      name: inputValues.name,
-      link: inputValues.link,
-      weather: inputValues.weatherType,
-    };
-    setClothingItems([...clothingItems, newCardData]);
-    closeActiveModal;
   };
 
   const closeActiveModal = () => {
@@ -72,6 +64,7 @@ function App() {
     addItem({ name, imageUrl, weather })
       .then((newItem) => {
         setClothingItems((prev) => [newItem, ...prev]);
+        closeActiveModal();
       })
       .catch((err) => console.error(err));
   };
@@ -85,7 +78,7 @@ function App() {
   };
 
   return (
-    <currentTemperatureUnitContext.Provider
+    <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
       <div className="page">
@@ -110,6 +103,7 @@ function App() {
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   setClothingItems={setClothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -125,10 +119,22 @@ function App() {
           isOpen={activeModal === "preview"}
           card={selectedCard}
           onClose={closeActiveModal}
+          openConfirmModal={() => setIsConfirmOpen(true)}
         />
+
+        <DeleteConfirmModal
+          isOpen={isConfirmOpen}
+          onClose={() => setIsConfirmOpen(false)}
+          onConfirm={() => {
+            handleDeleteItem(selectedCard._id);
+            setIsConfirmOpen(false);
+            closeActiveModal();
+          }}
+        />
+
         <Footer />
       </div>
-    </currentTemperatureUnitContext.Provider>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 

@@ -1,0 +1,82 @@
+/* Fullscreen overlay */
+.delete-modal {
+  font-family: CabinetGrotesk, Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.delete-modal_opened {
+  visibility: visible;
+}
+
+.delete-modal__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  width: 670px;
+  height: 280px;
+  background: rgba(255, 255, 255, 1);
+  padding: 40px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  position: relative;
+  text-align: center;
+}
+
+.delete-modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-modal__close-btn {
+  width: 16px;
+  height: 16px;
+}
+
+.delete-modal__message {
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.delete-modal__warning {
+  margin-top: 8px;
+}
+
+.delete-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.delete-modal__confirm-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 77, 0, 1);
+  cursor: pointer;
+}
+
+.delete-modal__cancel-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
