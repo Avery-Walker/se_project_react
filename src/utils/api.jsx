@@ -20,7 +20,7 @@ export function deleteItem(id) {
   }).then((res) => checkResponse(res));
 }
 
-function checkResponse(res) {
+export function checkResponse(res) {
   if (res.ok) {
     return res.json();
   }
