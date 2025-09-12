@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   const defaultValues = { name: "", imageUrl: "", weather: "" };
-  const { values, handleChange } = useForm(defaultValues);
+  const { values, handleChange, resetForm } = useForm(defaultValues);
+
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -25,12 +32,11 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           className="modal__input modal__input_type_card-name"
           id="clothing-name"
           placeholder="Name"
-          required
           minLength="1"
           maxLength="30"
           value={values.name}
           onChange={handleChange}
-          requiered
+          required
         />
       </label>
       <label htmlFor="imageUrl" className="modal__label">
