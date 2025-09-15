@@ -72,7 +72,7 @@ function App() {
   const handleDeleteItem = (id) => {
     deleteItem(id)
       .then(() => {
-        setClothingItems((prev) => prev.filter((item) => item._id !== id));
+        setClothingItems((prev) => prev.filter((item) => item.id !== id));
       })
       .catch((err) => console.error(err));
   };
@@ -126,7 +126,7 @@ function App() {
           isOpen={isConfirmOpen}
           onClose={() => setIsConfirmOpen(false)}
           onConfirm={() => {
-            handleDeleteItem(selectedCard._id);
+            handleDeleteItem(selectedCard.id);
             setIsConfirmOpen(false);
             closeActiveModal();
           }}

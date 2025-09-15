@@ -2,20 +2,22 @@ import { useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
+const defaultValues = { name: "", imageUrl: "", weather: "" };
+
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
-  const defaultValues = { name: "", imageUrl: "", weather: "" };
   const { values, handleChange, resetForm } = useForm(defaultValues);
 
   useEffect(() => {
     if (isOpen) {
-      resetForm();
+      resetForm(); // just clears to defaults
     }
-  }, [isOpen, resetForm]);
+  }, [isOpen]); // notice resetForm is NOT a dependency anymore ✅
 
   function handleSubmit(evt) {
     evt.preventDefault();
     onAddItem(values);
   }
+
   return (
     <ModalWithForm
       title="New garment"
