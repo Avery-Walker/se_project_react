@@ -27,7 +27,7 @@ function Main({ weatherData, handleCardClick, clothingItems, onCardLike }) {
         <ul className="cards__list">
           {userWeatherItems.map((item) => (
             <ItemCard
-              key={item._id}
+              key={item._id || item.name}
               item={item}
               onCardClick={handleCardClick}
               onCardLike={onCardLike}
