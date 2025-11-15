@@ -1,3 +1,4 @@
+import "./ItemModal.css";
 import { useContext } from "react";
 import x from "../../assets/x.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
