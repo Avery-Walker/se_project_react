@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { coordinates, apiKey } from "../../utils/constants";
@@ -73,11 +73,6 @@ function App() {
     localStorage.removeItem("jwt");
     setUser(null);
     setIsLoggedIn(false);
-  };
-
-  const navigate = useNavigate();
-  const handleProfileClick = () => {
-    navigate("/profile");
   };
 
   useEffect(() => {
@@ -217,11 +212,7 @@ function App() {
       >
         <div className="page">
           <div className="page__content">
-            <Header
-              handleAddClick={handleAddClick}
-              handleProfileClick={handleProfileClick}
-              weatherData={weatherData}
-            />
+            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
             <Routes>
               <Route
                 path="/"

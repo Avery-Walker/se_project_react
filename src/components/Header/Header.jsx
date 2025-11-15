@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({ handleAddClick, handleProfileClick, weatherData }) {
+function Header({ handleAddClick, weatherData }) {
   const currentUser = useContext(CurrentUserContext);
 
   const currentDate = new Date().toLocaleString("default", {
@@ -42,13 +42,8 @@ function Header({ handleAddClick, handleProfileClick, weatherData }) {
           + Add Clothes
         </button>
 
-        <button
-          className="header__account-btn"
-          onClick={handleProfileClick}
-          type="button"
-        >
+        <Link to="/profile" className="header__account-btn">
           <p className="header__username">{currentUser?.name}</p>
-
           <div className="header__avatar-wrapper">
             <img
               className="header__avatar"
@@ -56,7 +51,7 @@ function Header({ handleAddClick, handleProfileClick, weatherData }) {
               alt="User avatar"
             />
           </div>
-        </button>
+        </Link>
       </div>
     </header>
   );
