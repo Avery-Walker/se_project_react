@@ -1,4 +1,7 @@
-import { checkResponse } from "./api.jsx";
+function checkResponse(res) {
+  if (res.ok) return res.json();
+  return Promise.reject(`Error: ${res.status}`);
+}
 
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
