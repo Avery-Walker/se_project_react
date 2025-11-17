@@ -9,15 +9,14 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 function Header({ handleAddClick, weatherData }) {
   const currentUser = useContext(CurrentUserContext);
 
+  const isLoggedIn = Boolean(currentUser?._id);
+
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
 
   const avatarToShow = currentUser?.avatar || avatarPlaceholder;
-  const firstLetter = currentUser?.name
-    ? currentUser.name.charAt(0).toUpperCase()
-    : "?";
 
   return (
     <header className="header">
@@ -34,24 +33,37 @@ function Header({ handleAddClick, weatherData }) {
       <div className="header__right">
         <ToggleSwitch />
 
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          + Add Clothes
-        </button>
+        {isLoggedIn ? (
+          <>
+            <button
+              onClick={handleAddClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              + Add Clothes
+            </button>
 
-        <Link to="/profile" className="header__account-btn">
-          <p className="header__username">{currentUser?.name}</p>
-          <div className="header__avatar-wrapper">
-            <img
-              className="header__avatar"
-              src={avatarToShow}
-              alt="User avatar"
-            />
-          </div>
-        </Link>
+            <Link to="/profile" className="header__account-btn">
+              <p className="header__username">{currentUser?.name}</p>
+              <div className="header__avatar-wrapper">
+                <img
+                  className="header__avatar"
+                  src={avatarToShow}
+                  alt="User avatar"
+                />
+              </div>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/signup" className="header__auth-link">
+              Sign up
+            </Link>
+            <Link to="/login" className="header__auth-link">
+              Log in
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

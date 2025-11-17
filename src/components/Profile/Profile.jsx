@@ -8,6 +8,7 @@ function Profile({
   setClothingItems,
   handleAddClick,
   onEditProfile,
+  onSignOut,
 }) {
   return (
     <div className="profile">

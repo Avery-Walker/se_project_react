@@ -9,17 +9,21 @@ function ItemModal({ isOpen, onClose, card, openConfirmModal }) {
   const isOwn = card?.owner === currentUser?._id;
 
   return (
-    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content modal__content_type_image">
-        <button onClick={onClose} type="button" className="modal__close">
-          <img className="modal__close-btn" src={x} alt="close icon" />
+    <div className={`item-modal ${isOpen ? "item-modal_opened" : ""}`}>
+      <div className="item-modal__content item-modal__content_type_image">
+        <button onClick={onClose} type="button" className="item-modal__close">
+          <img className="item-modal__close-btn" src={x} alt="close icon" />
         </button>
 
-        <img src={card?.imageUrl} alt={card.name} className="modal__image" />
+        <img
+          src={card?.imageUrl}
+          alt={card?.name}
+          className="item-modal__image"
+        />
 
-        <div className="modal__footer">
-          <h2 className="modal__caption">{card.name}</h2>
-          <p className="modal__weather">Weather: {card.weather}</p>
+        <div className="item-modal__footer">
+          <h2 className="item-modal__caption">{card?.name}</h2>
+          <p className="item-modal__weather">Weather: {card?.weather}</p>
 
           {isOwn && (
             <button
@@ -27,7 +31,7 @@ function ItemModal({ isOpen, onClose, card, openConfirmModal }) {
                 onClose();
                 openConfirmModal();
               }}
-              className="modal__delete-btn"
+              className="item-modal__delete-btn"
             >
               Delete item
             </button>

@@ -1,12 +1,7 @@
 const baseUrl = "http://localhost:3001";
 
-// Helper to check API response
-function checkResponse(res) {
-  if (res.ok) return res.json();
-  return Promise.reject(`Error: ${res.status}`);
-}
+import { checkResponse } from "./request";
 
-// Helper to get headers with optional authorization
 function getHeaders(withAuth = false) {
   const headers = { "Content-Type": "application/json" };
   if (withAuth) {
@@ -16,7 +11,6 @@ function getHeaders(withAuth = false) {
   return headers;
 }
 
-// Items
 export function getItems() {
   return fetch(`${baseUrl}/items`, {
     headers: getHeaders(false),
@@ -38,16 +32,14 @@ export function deleteItem(id) {
   }).then(checkResponse);
 }
 
-// User profile
 export function updateUserProfile({ name, avatar }) {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
-    headers: getHeaders(true), // send token
+    headers: getHeaders(true),
     body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
 }
 
-// Likes (needed for handleCardLike in App.jsx)
 export function addCardLike(cardId) {
   return fetch(`${baseUrl}/items/${cardId}/likes`, {
     method: "PUT",
@@ -62,7 +54,6 @@ export function removeCardLike(cardId) {
   }).then(checkResponse);
 }
 
-// Optional: Default export object (if you want to keep App.jsx using "api.addCardLike")
 const api = {
   getItems,
   addItem,

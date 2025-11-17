@@ -24,6 +24,7 @@ function ClothesSection({ clothingItems, onCardClick, handleAddClick }) {
             key={item._id || item.name}
             item={item}
             onCardClick={onCardClick}
+            onCardLike={onCardLike}
           />
         ))}
       </ul>

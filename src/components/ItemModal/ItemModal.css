@@ -1,11 +1,11 @@
-.modal {
+.item-modal {
   font-family: CabinetGrotesk, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
 }
 
-.modal__content {
+.item-modal__content {
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -17,29 +17,29 @@
   position: relative;
 }
 
-.modal__content_type_image {
+.item-modal__content_type_image {
   display: flex;
   flex-direction: column;
   margin: 0;
 }
 
-.modal__image {
+.item-modal__image {
   width: 498px;
   height: 498px;
   object-fit: cover;
   display: block;
 }
 
-.modal__close {
+.item-modal__close {
   background: transparent;
   border: none;
 }
 
-.modal__close-btn {
+.item-modal__close-btn {
   background: transparent;
 }
 
-.modal__delete-btn {
+.item-modal__delete-btn {
   font-weight: 700;
   border: none;
   background-color: #fff;
@@ -49,12 +49,12 @@
   bottom: 100px;
 }
 
-.modal__delete-btn:hover {
+.item-modal__delete-btn:hover {
   font-size: 21px;
   cursor: pointer;
 }
 
-.modal__footer {
+.item-modal__footer {
   height: 112px;
   padding: 16px;
   background-color: #fff;

@@ -10,8 +10,7 @@ function Main({ weatherData, handleCardClick, clothingItems, onCardLike }) {
   const { user: currentUser } = useContext(UserContext);
 
   const userWeatherItems = clothingItems.filter(
-    (item) =>
-      item.owner === currentUser?._id && item.weather === weatherData.type
+    (item) => item.weather === weatherData.type
   );
 
   return (
