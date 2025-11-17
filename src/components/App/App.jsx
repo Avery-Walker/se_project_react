@@ -22,6 +22,7 @@ import { updateUserProfile } from "../../utils/api";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import api from "../../utils/api";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -225,6 +226,7 @@ function App() {
                 onRegisterClick={openRegisterModal}
                 isLoggedIn={isLoggedIn}
               />
+
               <Routes>
                 <Route
                   path="/"
@@ -239,6 +241,7 @@ function App() {
                     />
                   }
                 />
+
                 <Route
                   path="/profile"
                   element={
@@ -263,6 +266,7 @@ function App() {
               onClose={closeActiveModal}
               onAddItem={handleAddItem}
             />
+
             <ItemModal
               isOpen={activeModal === "preview"}
               card={selectedCard}
