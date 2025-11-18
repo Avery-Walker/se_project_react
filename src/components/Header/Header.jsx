@@ -6,11 +6,15 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  onLoginClick,
+  onRegisterClick,
+  weatherData,
+}) {
   const currentUser = useContext(CurrentUserContext);
 
   const isLoggedIn = Boolean(currentUser?._id);
-
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -56,12 +60,20 @@ function Header({ handleAddClick, weatherData }) {
           </>
         ) : (
           <>
-            <Link to="/signup" className="header__auth-link">
+            <button
+              type="button"
+              className="header__auth-link"
+              onClick={onRegisterClick}
+            >
               Sign up
-            </Link>
-            <Link to="/login" className="header__auth-link">
+            </button>
+            <button
+              type="button"
+              className="header__auth-link"
+              onClick={onLoginClick}
+            >
               Log in
-            </Link>
+            </button>
           </>
         )}
       </div>
