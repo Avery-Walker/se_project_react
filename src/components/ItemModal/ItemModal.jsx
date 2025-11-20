@@ -5,33 +5,33 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({ isOpen, onClose, card, openConfirmModal }) {
   const currentUser = useContext(CurrentUserContext);
-
   const isOwn = card?.owner === currentUser?._id;
 
+  if (!card) return null;
+
   return (
-    <div className={`item-modal ${isOpen ? "item-modal_opened" : ""}`}>
-      <div className="item-modal__content item-modal__content_type_image">
+    <div className={`modal item-modal ${isOpen ? "modal_opened" : ""}`}>
+      <div className="item-modal__content">
         <button onClick={onClose} type="button" className="item-modal__close">
-          <img className="item-modal__close-btn" src={x} alt="close icon" />
+          <img className="item-modal__close-btn" src={x} alt="close" />
         </button>
 
         <img
-          src={card?.imageUrl}
-          alt={card?.name}
+          src={card.imageUrl}
+          alt={card.name}
           className="item-modal__image"
         />
 
         <div className="item-modal__footer">
-          <h2 className="item-modal__caption">{card?.name}</h2>
-          <p className="item-modal__weather">Weather: {card?.weather}</p>
+          <div className="item-modal__text">
+            <h2 className="item-modal__name">{card.name}</h2>
+            <p className="item-modal__weather">Weather: {card.weather}</p>
+          </div>
 
           {isOwn && (
             <button
-              onClick={() => {
-                onClose();
-                openConfirmModal();
-              }}
               className="item-modal__delete-btn"
+              onClick={openConfirmModal}
             >
               Delete item
             </button>

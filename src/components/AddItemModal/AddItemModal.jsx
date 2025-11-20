@@ -9,9 +9,9 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      resetForm(); // just clears to defaults
+      resetForm();
     }
-  }, [isOpen]); // notice resetForm is NOT a dependency anymore ✅
+  }, [isOpen]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -27,7 +27,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       onSubmit={handleSubmit}
     >
       <label htmlFor="clothing-name" className="modal__label">
-        Name{" "}
+        Name
         <input
           type="text"
           name="name"
@@ -41,21 +41,24 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           required
         />
       </label>
+
       <label htmlFor="imageUrl" className="modal__label">
-        Image{" "}
+        Image
         <input
           name="imageUrl"
           type="url"
           className="modal__input"
           id="imageUrl"
-          placeholder="Image Url"
+          placeholder="Image URL"
           value={values.imageUrl}
           onChange={handleChange}
           required
         />
       </label>
+
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type</legend>
+
         <label htmlFor="hot" className="modal__label modal__label_type_radio">
           <input
             id="hot"
