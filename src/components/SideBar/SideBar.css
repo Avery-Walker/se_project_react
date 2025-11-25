@@ -1,28 +1,28 @@
 .sidebar {
   font-family: CabinetGrotesk, Arial, Helvetica, sans-serif;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar__top {
+  display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
-.sidebar__avatar {
+.sidebar__avatar,
+.sidebar__avatar-placeholder {
   height: 56px;
   width: 56px;
-  margin-right: 16px;
+  border-radius: 50%;
   flex-shrink: 0;
-}
-
-.sidebar__username {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 100%;
-  white-space: nowrap;
+  object-fit: cover;
 }
 
 .sidebar__avatar-placeholder {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
   background: #000;
   color: #fff;
   font-weight: bold;
@@ -30,6 +30,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.sidebar__username {
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .sidebar__edit-button {
@@ -44,4 +50,12 @@
 
 .sidebar__edit-button:hover {
   opacity: 0.6;
+}
+
+.sidebar__sign-out-button {
+  margin-top: 8px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
 }

@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const defaultValues = { name: "", avatar: "", email: "", password: "" };
 
-const RegisterModal = ({ isOpen, onRegister, onClose }) => {
+const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
   const { values, handleChange, resetForm } = useForm(defaultValues);
 
   useEffect(() => {
@@ -25,6 +25,15 @@ const RegisterModal = ({ isOpen, onRegister, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      extraButton={
+        <button
+          type="button"
+          className="modal__alternate-button"
+          onClick={onLoginClick}
+        >
+          or Log In
+        </button>
+      }
     >
       <label className="modal__label">
         Name

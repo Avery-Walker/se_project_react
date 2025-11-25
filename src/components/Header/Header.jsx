@@ -48,13 +48,15 @@ function Header({
             </button>
 
             <Link to="/profile" className="header__account-btn">
-              <p className="header__username">{currentUser?.name}</p>
-              <div className="header__avatar-wrapper">
-                <img
-                  className="header__avatar"
-                  src={avatarToShow}
-                  alt="User avatar"
-                />
+              <div className="header__user-container">
+                <p className="header__username">{currentUser?.name}</p>
+                <div className="header__avatar-wrapper">
+                  <img
+                    className="header__avatar"
+                    src={avatarToShow}
+                    alt="User avatar"
+                  />
+                </div>
               </div>
             </Link>
           </>

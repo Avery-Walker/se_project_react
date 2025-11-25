@@ -4,13 +4,11 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const defaultValues = { email: "", password: "" };
 
-const LoginModal = ({ isOpen, onLogin, onClose }) => {
+const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
   const { values, handleChange, resetForm } = useForm(defaultValues);
 
   useEffect(() => {
-    if (isOpen) {
-      resetForm();
-    }
+    if (isOpen) resetForm();
   }, [isOpen]);
 
   function handleSubmit(e) {
@@ -20,11 +18,20 @@ const LoginModal = ({ isOpen, onLogin, onClose }) => {
 
   return (
     <ModalWithForm
-      title="Log in"
-      buttonText="Login"
+      title="Log In"
+      buttonText="Log In"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      extraButton={
+        <button
+          type="button"
+          className="modal__alternate-button"
+          onClick={onRegisterClick}
+        >
+          or Sign Up
+        </button>
+      }
     >
       <label className="modal__label">
         Email

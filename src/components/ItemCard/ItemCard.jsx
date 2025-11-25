@@ -1,9 +1,11 @@
 import "./ItemCard.css";
 import { useContext } from "react";
-import UserContext from "../../contexts/UserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import notLikedIcon from "../../assets/notliked.svg";
+import likedIcon from "../../assets/liked.svg";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
-  const { user } = useContext(UserContext);
+  const user = useContext(CurrentUserContext);
 
   const isLiked = item.likes?.some((id) => id === user?._id);
 
@@ -36,7 +38,13 @@ function ItemCard({ item, onCardClick, onCardLike }) {
             className={likeButtonClassName}
             onClick={handleLike}
             aria-label="like button"
-          ></button>
+          >
+            <img
+              src={isLiked ? likedIcon : notLikedIcon}
+              alt={isLiked ? "liked" : "not liked"}
+              className="card__like-icon"
+            />
+          </button>
 
           <span className="card__like-count">{item.likes?.length || 0}</span>
         </div>

@@ -185,8 +185,18 @@ function App() {
       .catch(console.error);
   };
 
+  const openLoginModal = () => {
+    setIsLoginOpen(true);
+    setIsRegisterOpen(false);
+  };
+
+  const openRegisterModal = () => {
+    setIsRegisterOpen(true);
+    setIsLoginOpen(false);
+  };
+
   return (
-    <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
       <CurrentUserContext.Provider value={user}>
         <CurrentTemperatureUnitContext.Provider
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -251,16 +261,18 @@ function App() {
               onConfirm={() => handleDeleteItem(selectedCard._id)}
             />
 
-            <RegisterModal
-              isOpen={isRegisterOpen}
-              onClose={closeAllModals}
-              onRegister={handleRegister}
-            />
-
             <LoginModal
               isOpen={isLoginOpen}
-              onClose={closeAllModals}
               onLogin={handleLogin}
+              onClose={closeAllModals}
+              onRegisterClick={openRegisterModal}
+            />
+
+            <RegisterModal
+              isOpen={isRegisterOpen}
+              onRegister={handleRegister}
+              onClose={closeAllModals}
+              onLoginClick={openLoginModal}
             />
 
             <EditProfileModal

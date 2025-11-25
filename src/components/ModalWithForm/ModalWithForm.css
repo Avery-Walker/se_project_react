@@ -95,3 +95,26 @@
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+.modal__button-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal__extra {
+  margin-left: 4px;
+}
+
+.modal__alternate-button {
+  background: none;
+  border: none;
+  color: #8b8b8b;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.modal__alternate-button:hover {
+  color: #000;
+}
