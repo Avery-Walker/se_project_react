@@ -101,10 +101,9 @@ function App() {
   };
 
   const handleAddItem = ({ name, imageUrl, weather }) => {
-    const token = localStorage.getItem("jwt");
     if (!user) return;
 
-    addItem({ name, imageUrl, weather, owner: user._id }, token)
+    addItem({ name, imageUrl, weather })
       .then((newItem) => {
         setClothingItems((prev) => [newItem, ...prev]);
         closeAllModals();

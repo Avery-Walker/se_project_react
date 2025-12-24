@@ -1,7 +1,7 @@
-const baseUrl = process.env.NODE_ENV === "production" 
-  ? "https://api.whattwr.chickenkiller.com"
-  : "http://localhost:3001";
-
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.whattwr.chickenkiller.com"
+    : "http://localhost:3001";
 import { checkResponse } from "./request";
 
 function getHeaders(withAuth = false) {
@@ -19,11 +19,11 @@ export function getItems() {
   }).then(checkResponse);
 }
 
-export function addItem({ name, imageUrl, weather, owner }) {
+export function addItem({ name, imageUrl, weather }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: getHeaders(true),
-    body: JSON.stringify({ name, imageUrl, weather, owner }),
+    body: JSON.stringify({ name, imageUrl, weather }),
   }).then(checkResponse);
 }
 
