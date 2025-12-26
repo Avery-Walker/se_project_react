@@ -3,17 +3,17 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import UserContext from "../../contexts/UserContext";
 
 function EditProfileModal({ isOpen, onClose, onSubmit }) {
-  const { currentUser } = useContext(UserContext);
+  const { user } = useContext(UserContext); // ✅ FIX HERE
 
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
-    if (currentUser && isOpen) {
-      setName(currentUser.name || "");
-      setAvatar(currentUser.avatar || "");
+    if (user && isOpen) {
+      setName(user.name || "");
+      setAvatar(user.avatar || "");
     }
-  }, [currentUser, isOpen]);
+  }, [user, isOpen]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
